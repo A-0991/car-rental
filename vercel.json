@@ -1,0 +1,47 @@
+{
+    "version": 2,
+    "name": "car-rental-app",
+    "builds": [
+      {
+        "src": "package.json",
+        "use": "@vercel/node"
+      },
+      {
+        "src": "src/**/*",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "/src/index.js"
+      }
+    ],
+    "env": {
+      "NODE_ENV": "production"
+    },
+    "build": {
+      "env": {
+        "API_URL": "https://api.example.com",
+        "ANOTHER_ENV_VAR": "value"
+      }
+    },
+    "public": true,
+    "regions": ["sfo1", "iad1"],
+    "cleanUrls": true,
+    "trailingSlash": false,
+    "redirects": [
+      {
+        "source": "/old-route",
+        "destination": "/new-route",
+        "permanent": true
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/api/(.*)",
+        "destination": "/api/index.js"
+      }
+    ]
+  }
+  
